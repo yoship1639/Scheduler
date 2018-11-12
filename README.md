@@ -32,6 +32,6 @@ Schedule.Repeat(3.0, 1.0, -1, () => Console.WriteLine("Hello world!"));
 ```
 Schedule.Repeat(0.0, 5.0, -1, () =>
 {
-    Schedule.Repeat(0.0, 0.1, 10, () => Console.WriteLine())
+    Schedule.Repeat(0.0, 0.1, 10, () => Console.WriteLine());
 });
 ```

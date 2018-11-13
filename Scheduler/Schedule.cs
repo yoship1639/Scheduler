@@ -187,5 +187,32 @@ namespace Scheduler
 
             
         }
+
+        private static Dictionary<object, Stopwatch> timers = new Dictionary<object, Stopwatch>();
+
+        public static void StartTimer(object tag)
+        {
+            if (timers.ContainsKey(tag))
+            {
+                timers[tag].Start();
+            }
+            else
+            {
+                var sw = new Stopwatch();
+                sw.Start();
+                timers.Add(tag, sw);
+            }
+            
+        }
+        public static void StopTimer(object tag)
+        {
+            if (!timers.ContainsKey(tag)) return;
+            timers[tag].Stop();
+        }
+        public static double GetElapsed(object tag)
+        {
+            if (!timers.ContainsKey(tag)) return 0.0;
+            return timers[tag].Elapsed.TotalSeconds;
+        }
     }
 }
